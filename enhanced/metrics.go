@@ -20,13 +20,14 @@ import (
 //
 //nolint:lll
 type osMetrics struct {
-	Engine             string    `json:"engine"             help:"The database engine for the DB instance."`
-	InstanceID         string    `json:"instanceID"         help:"The DB instance identifier."`
-	InstanceResourceID string    `json:"instanceResourceID" help:"A region-unique, immutable identifier for the DB instance, also used as the log stream identifier."`
-	NumVCPUs           int       `json:"numVCPUs"           help:"The number of virtual CPUs for the DB instance."`
-	Timestamp          time.Time `json:"timestamp"          help:"The time at which the metrics were taken."`
-	Uptime             string    `json:"uptime"             help:"The amount of time that the DB instance has been active."`
-	Version            float64   `json:"version"            help:"The version of the OS metrics' stream JSON format."`
+	Engine              string    `json:"engine"              help:"The database engine for the DB instance."`
+	InstanceID          string    `json:"instanceID"          help:"The DB instance identifier."`
+	InstanceResourceID  string    `json:"instanceResourceID"  help:"A region-unique, immutable identifier for the DB instance, also used as the log stream identifier."`
+	NumVCPUs            int       `json:"numVCPUs"            help:"The number of virtual CPUs for the DB instance."`
+	Timestamp           time.Time `json:"timestamp"           help:"The time at which the metrics were taken."`
+	Uptime              string    `json:"uptime"              help:"The amount of time that the DB instance has been active."`
+	Version             float64   `json:"version"             help:"The version of the OS metrics' stream JSON format."`
+	MaxAllocatedStorage float64   `json:"maxAllocatedStorage" help:"Upper limit in gibibytes to which Amazon RDS can automatically scale the storage of the DB instance."`
 
 	CPUUtilization    cpuUtilization    `json:"cpuUtilization"`
 	DiskIO            []diskIO          `json:"diskIO"`
@@ -88,7 +89,7 @@ type fileSys struct {
 	MountPoint      string  `json:"mountPoint"      help:"The path to the file system."`
 	Name            string  `json:"name"            help:"The name of the file system."`
 	Total           int     `json:"total"           help:"The total number of disk space available for the file system, in kilobytes."`
-	Used            int     `json:"used"            help:"The amount of disk space used by files in the file system, in kilobytes."`
+	Used            int64   `json:"used"            help:"The amount of disk space used by files in the file system, in kilobytes."`
 	UsedFilePercent float64 `json:"usedFilePercent" help:"The percentage of available files in use."`
 	UsedFiles       int     `json:"usedFiles"       help:"The number of files in the file system."`
 	UsedPercent     float64 `json:"usedPercent"     help:"The percentage of the file-system disk space in use."`
